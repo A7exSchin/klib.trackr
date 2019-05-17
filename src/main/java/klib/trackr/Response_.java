@@ -1,6 +1,7 @@
 package klib.trackr;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -11,36 +12,49 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-"latitude",
-"longitude"
+"metaInfo",
+"route",
+"language"
 })
-public class Waypoint {
+public class Response_ {
 
-@JsonProperty("latitude")
-private Double latitude;
-@JsonProperty("longitude")
-private Double longitude;
+@JsonProperty("metaInfo")
+private MetaInfo metaInfo;
+@JsonProperty("route")
+private List<Route> route = null;
+@JsonProperty("language")
+private String language;
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-@JsonProperty("latitude")
-public Double getLatitude() {
-return latitude;
+@JsonProperty("metaInfo")
+public MetaInfo getMetaInfo() {
+return metaInfo;
 }
 
-@JsonProperty("latitude")
-public void setLatitude(Double latitude) {
-this.latitude = latitude;
+@JsonProperty("metaInfo")
+public void setMetaInfo(MetaInfo metaInfo) {
+this.metaInfo = metaInfo;
 }
 
-@JsonProperty("longitude")
-public Double getLongitude() {
-return longitude;
+@JsonProperty("route")
+public List<Route> getRoute() {
+return route;
 }
 
-@JsonProperty("longitude")
-public void setLongitude(Double longitude) {
-this.longitude = longitude;
+@JsonProperty("route")
+public void setRoute(List<Route> route) {
+this.route = route;
+}
+
+@JsonProperty("language")
+public String getLanguage() {
+return language;
+}
+
+@JsonProperty("language")
+public void setLanguage(String language) {
+this.language = language;
 }
 
 @JsonAnyGetter
@@ -53,6 +67,6 @@ public void setAdditionalProperty(String name, Object value) {
 this.additionalProperties.put(name, value);
 }
 public String toString() {
-	return "Latitude:" + latitude + " ;Longitude:" + longitude;
+	return route.toString();
 }
 }

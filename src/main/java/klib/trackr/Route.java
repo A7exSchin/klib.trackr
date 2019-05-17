@@ -1,27 +1,85 @@
 package klib.trackr;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+"waypoint",
+"mode",
+"leg",
+"summary"
+})
 public class Route {
 
-    private Waypoint waypoint;
+@JsonProperty("waypoint")
+private List<Waypoints> waypoint = null;
+@JsonProperty("mode")
+private Mode mode;
+@JsonProperty("leg")
+private List<Leg> leg = null;
+@JsonProperty("summary")
+private Summary summary;
+@JsonIgnore
+private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Route() {
-    }
+@JsonProperty("waypoint")
+public List<Waypoints> getWaypoint() {
+return waypoint;
+}
 
-    public Waypoint getValue() {
-        return waypoint;
-    }
+@JsonProperty("waypoint")
+public void setWaypoint(List<Waypoints> waypoint) {
+this.waypoint = waypoint;
+}
 
-    public void setWaypoint(Waypoint waypoint) {
-        this.waypoint = waypoint;
-    }
+@JsonProperty("mode")
+public Mode getMode() {
+return mode;
+}
 
-    @Override
-    public String toString() {
-        return "Route{" +
-                "waypoint='" + waypoint +
-                '}';
-    }
+@JsonProperty("mode")
+public void setMode(Mode mode) {
+this.mode = mode;
+}
+
+@JsonProperty("leg")
+public List<Leg> getLeg() {
+return leg;
+}
+
+@JsonProperty("leg")
+public void setLeg(List<Leg> leg) {
+this.leg = leg;
+}
+
+@JsonProperty("summary")
+public Summary getSummary() {
+return summary;
+}
+
+@JsonProperty("summary")
+public void setSummary(Summary summary) {
+this.summary = summary;
+}
+
+@JsonAnyGetter
+public Map<String, Object> getAdditionalProperties() {
+return this.additionalProperties;
+}
+
+@JsonAnySetter
+public void setAdditionalProperty(String name, Object value) {
+this.additionalProperties.put(name, value);
+}
+public String toString() {
+	return waypoint.toString() + mode.toString();
+}
 }

@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "latitude",
 "longitude"
 })
-public class Waypoint {
+public class MappedPosition {
 
 @JsonProperty("latitude")
 private Double latitude;

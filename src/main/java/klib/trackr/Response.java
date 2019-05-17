@@ -1,28 +1,45 @@
 package klib.trackr;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.HashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+"response"
+})
 public class Response {
-	
 
-    private Route route;
+@JsonProperty("response")
+private Response_ response;
+@JsonIgnore
+private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Response() {
-    }
+@JsonProperty("response")
+public Response_ getResponse() {
+return response;
+}
 
-    public Route getRoute() {
-        return route;
-    }
+@JsonProperty("response")
+public void setResponse(Response_ response) {
+this.response = response;
+}
 
-    public void setRoute(Route route) {
-        this.route = route;
-    }
+@JsonAnyGetter
+public Map<String, Object> getAdditionalProperties() {
+return this.additionalProperties;
+}
 
-    @Override
-    public String toString() {
-        return "Response:{" +
-                 route +
-                '}';
-    }
+@JsonAnySetter
+public void setAdditionalProperty(String name, Object value) {
+this.additionalProperties.put(name, value);
+}
+public String toString() {
+	return "" + response;
+}
 }

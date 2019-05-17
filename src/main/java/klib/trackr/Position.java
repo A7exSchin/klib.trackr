@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "latitude",
 "longitude"
 })
-public class Waypoint {
+public class Position {
 
 @JsonProperty("latitude")
 private Double latitude;
@@ -52,7 +52,5 @@ return this.additionalProperties;
 public void setAdditionalProperty(String name, Object value) {
 this.additionalProperties.put(name, value);
 }
-public String toString() {
-	return "Latitude:" + latitude + " ;Longitude:" + longitude;
-}
+
 }
