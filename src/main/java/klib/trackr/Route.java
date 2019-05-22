@@ -80,6 +80,6 @@ public void setAdditionalProperty(String name, Object value) {
 this.additionalProperties.put(name, value);
 }
 public String toString() {
-	return waypoint.toString() + mode.toString();
+	return leg.toString();
 }
 }
