@@ -15,36 +15,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({ "waypoint", "mode", "leg", "summary" })
 public class Route {
 
-	@JsonProperty("waypoint")
-	private List<Waypoints> waypoint = null;
-	@JsonProperty("mode")
-	private Mode mode;
 	@JsonProperty("leg")
 	private List<Leg> leg = null;
-	@JsonProperty("summary")
-	private Summary summary;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	@JsonProperty("waypoint")
-	public List<Waypoints> getWaypoint() {
-		return waypoint;
-	}
-
-	@JsonProperty("waypoint")
-	public void setWaypoint(List<Waypoints> waypoint) {
-		this.waypoint = waypoint;
-	}
-
-	@JsonProperty("mode")
-	public Mode getMode() {
-		return mode;
-	}
-
-	@JsonProperty("mode")
-	public void setMode(Mode mode) {
-		this.mode = mode;
-	}
 
 	@JsonProperty("leg")
 	public List<Leg> getLeg() {
@@ -54,16 +29,6 @@ public class Route {
 	@JsonProperty("leg")
 	public void setLeg(List<Leg> leg) {
 		this.leg = leg;
-	}
-
-	@JsonProperty("summary")
-	public Summary getSummary() {
-		return summary;
-	}
-
-	@JsonProperty("summary")
-	public void setSummary(Summary summary) {
-		this.summary = summary;
 	}
 
 	@JsonAnyGetter

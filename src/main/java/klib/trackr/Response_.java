@@ -15,24 +15,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({ "metaInfo", "route", "language" })
 public class Response_ {
 
-	@JsonProperty("metaInfo")
-	private MetaInfo metaInfo;
 	@JsonProperty("route")
 	private List<Route> route = null;
 	@JsonProperty("language")
 	private String language;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-	@JsonProperty("metaInfo")
-	public MetaInfo getMetaInfo() {
-		return metaInfo;
-	}
-
-	@JsonProperty("metaInfo")
-	public void setMetaInfo(MetaInfo metaInfo) {
-		this.metaInfo = metaInfo;
-	}
 
 	@JsonProperty("route")
 	public List<Route> getRoute() {

@@ -15,10 +15,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({ "start", "end", "length", "travelTime", "maneuver" })
 public class Leg {
 
-	@JsonProperty("start")
-	private Start start;
-	@JsonProperty("end")
-	private End end;
 	@JsonProperty("length")
 	private Integer length;
 	@JsonProperty("travelTime")
@@ -28,25 +24,6 @@ public class Leg {
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	@JsonProperty("start")
-	public Start getStart() {
-		return start;
-	}
-
-	@JsonProperty("start")
-	public void setStart(Start start) {
-		this.start = start;
-	}
-
-	@JsonProperty("end")
-	public End getEnd() {
-		return end;
-	}
-
-	@JsonProperty("end")
-	public void setEnd(End end) {
-		this.end = end;
-	}
 
 	@JsonProperty("length")
 	public Integer getLength() {
