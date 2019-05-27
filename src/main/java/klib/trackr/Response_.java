@@ -1,6 +1,7 @@
 package klib.trackr;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -11,22 +12,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "response" })
-public class Response {
+@JsonPropertyOrder({ "metaInfo", "route", "language" })
+public class Response_ {
 
-	@JsonProperty("response")
-	private Response_ response;
+	@JsonProperty("route")
+	private List<Route> route = null;
+	@JsonProperty("language")
+	private String language;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	@JsonProperty("response")
-	public Response_ getResponse() {
-		return response;
+	@JsonProperty("route")
+	public List<Route> getRoute() {
+		return route;
 	}
 
-	@JsonProperty("response")
-	public void setResponse(Response_ response) {
-		this.response = response;
+	@JsonProperty("route")
+	public void setRoute(List<Route> route) {
+		this.route = route;
+	}
+
+	@JsonProperty("language")
+	public String getLanguage() {
+		return language;
+	}
+
+	@JsonProperty("language")
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 	@JsonAnyGetter
@@ -41,6 +54,6 @@ public class Response {
 
 	@Override
 	public String toString() {
-		return response.toString();
+		return route.toString();
 	}
 }

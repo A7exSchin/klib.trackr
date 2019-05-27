@@ -1,27 +1,48 @@
 package klib.trackr;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({ "waypoint", "mode", "leg", "summary" })
 public class Route {
 
-    private Waypoint waypoint;
+	@JsonProperty("leg")
+	private List<Leg> leg = null;
+	@JsonIgnore
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Route() {
-    }
 
-    public Waypoint getValue() {
-        return waypoint;
-    }
+	@JsonProperty("leg")
+	public List<Leg> getLeg() {
+		return leg;
+	}
 
-    public void setWaypoint(Waypoint waypoint) {
-        this.waypoint = waypoint;
-    }
+	@JsonProperty("leg")
+	public void setLeg(List<Leg> leg) {
+		this.leg = leg;
+	}
 
-    @Override
-    public String toString() {
-        return "Route{" +
-                "waypoint='" + waypoint +
-                '}';
-    }
+	@JsonAnyGetter
+	public Map<String, Object> getAdditionalProperties() {
+		return this.additionalProperties;
+	}
+
+	@JsonAnySetter
+	public void setAdditionalProperty(String name, Object value) {
+		this.additionalProperties.put(name, value);
+	}
+
+	@Override
+	public String toString() {
+		return leg.toString();
+	}
 }

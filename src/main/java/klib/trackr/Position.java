@@ -11,22 +11,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "response" })
-public class Response {
+@JsonPropertyOrder({ "latitude", "longitude" })
+public class Position {
 
-	@JsonProperty("response")
-	private Response_ response;
+	@JsonProperty("latitude")
+	private Double latitude;
+	@JsonProperty("longitude")
+	private Double longitude;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	@JsonProperty("response")
-	public Response_ getResponse() {
-		return response;
+	@JsonProperty("latitude")
+	public Double getLatitude() {
+		return latitude;
 	}
 
-	@JsonProperty("response")
-	public void setResponse(Response_ response) {
-		this.response = response;
+	@JsonProperty("latitude")
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	@JsonProperty("longitude")
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	@JsonProperty("longitude")
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
 	@JsonAnyGetter
@@ -39,8 +51,4 @@ public class Response {
 		this.additionalProperties.put(name, value);
 	}
 
-	@Override
-	public String toString() {
-		return response.toString();
-	}
 }
