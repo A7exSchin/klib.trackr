@@ -8,10 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
-import java.io.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 @SpringBootApplication
 public class GetRest {
