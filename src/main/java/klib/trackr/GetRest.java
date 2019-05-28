@@ -9,6 +9,8 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 import java.io.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -16,22 +18,20 @@ public class GetRest {
 
 	private static final Logger log = LoggerFactory.getLogger(GetRest.class);
 	
-	/*
-	private static String start = "48.9621219,9.0710486";
-	private static String end = "48.7389943,9.1017945";
-	*/
-	
 	public static String start;
 	public static String end;
 	
 	public static void main(String args[]) {
-		Scanner user_input = new Scanner(System.in);
-		System.out.print("Enter the start coordinates (f.e. 52.1234567,9.1234567): ");
-		start = user_input.next();
-		
-		System.out.print("Enter the end coordinates (f.e. 51.1234567,9.1234567): ");
-		end = user_input.next();
-		user_input.close();		
+		Map<String,String> arguments = new LinkedHashMap<String, String>();
+		for (int i = 0; i < args.length; i++) {
+			String key = args[i].split("=")[0];
+			String value = args[i].split("=")[1];
+			arguments.put(key, value);
+		}
+		start = arguments.get("start");
+		System.out.format("start coordinates: %s\n", start);
+		end = arguments.get("end");
+		System.out.format("end coordinates  : %s\n", end);
 
 		SpringApplication.run(GetRest.class);
 	}
